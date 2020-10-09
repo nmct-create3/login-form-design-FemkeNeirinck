@@ -41,6 +41,14 @@
     --global-color-neutral-xxxxx-dark: #2a2c43;
     --global-color-neutral-xxxxxx-dark: #20223a;
 
+    --global-page-color: var(--global-color-neutral-xxxxxx-dark);
+    --global-page-backgroundColor: var(--global-color-neutral-xx-light);
+    --global-card-backgroundColor: var(--global-color-neutral-xxxx-light);
+    --global-label-color: var(--global-color-neutral-xxx-dark);
+    --global-input-backgroundColor: var(--global-color-neutral-xxxx-light);
+    --global-input-borderColor: var(--global-color-neutral-xx-light);
+    --global-card_footer-borderTopColor: var(--global-color-neutral-xx-light);
+
     --global-baseline: 8px;
     --global-whitespace: calc(var(--global-baseline) *3); /* = 24px */
     --global-whitespace-xs: calc(var(--global-baseline) /2); /* = 4px */
@@ -68,11 +76,11 @@ html {
     font-size: 16px;
     line-height: 1.5;
     font-family: "Inter", Helvetica, arial, sans-serif;
-    color: var(--global-color-neutral-xxxxxx-dark);
+    color: var(--global-page-color);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: var(--global-color-neutral-xxx-light);
+    background-color: var(--global-page-backgroundColor);
 }
 
 *,
@@ -493,15 +501,23 @@ input {
 }
 
 .c-logo__path--1 {
-    fill: var(--global-color-neutral-xxxxxx-dark);
+    fill: var(--logo__path--1--fill, var(--global-color-neutral-xxxx-dark));
 }
 
 .c-logo__path--2 {
-    fill: var(--global-color-alpha);
+    fill: var(--logo__path--2--fill, var(--global-color-alpha));
 }
 
 .c-logo__path--3 {
-    fill: #1b4186;
+    fill: var(--logo__path--3-fill, var(--global-color-alpha-dark));
+}
+
+@media (prefers-color-scheme: dark) {
+    .c-logo {
+        --logo__path--1--fill: White;
+        --logo__path--2--fill: var(--logo__path--1-fill);
+        --logo__path--3--fill: var(--logo__path--1--fill);
+    }
 }
 
 /*
@@ -511,7 +527,7 @@ input {
 */
 
 .c-card {
-    background-color: var(--global-color-neutral-xxxx-light);
+    background-color: var(--global-card-backgroundColor);
     border-radius: 3px;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05),
     0 2px 4px rgba(0, 0, 0, 0.075);
@@ -536,7 +552,7 @@ input {
 
 .c-card__footer {
     padding-top: var(--global-whitespace);
-    border-top: 1px solid var(--global-color-neutral-xx-light);
+    border-top: 1px solid var(--global-card_footer-borderTopColor);
     text-align: center;
     overflow: auto;
 }
@@ -564,10 +580,11 @@ input {
     appearance: none;
 
     width: 100%;
-    border: 1px solid var(--global-color-neutral-xx-light);
+    border: 1px solid var(--global-input-borderColor);
     border-radius: 3px;
     font-family: inherit;
     color: var(--global-color-neutral-xxxxxx-dark);
+    background-color: var(--global-input-backgroundColor);
 
     font-size: 16px;
     line-height: var(--global-whitespace);
@@ -590,7 +607,7 @@ input {
     font-size: 14px;
     line-height: 16px;
     margin-bottom: var(--global-whitespace-sm);
-    color: var(--global-color-neutral-xx-dark);
+    color: var(--global-label-color);
 }
 
 .c-label--option {
@@ -637,6 +654,18 @@ input {
 
 .c-button--block {
 
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --global-page-color: White;
+        --global-page-backgroundColor: var(--global-color-neutral-xxxxxx-dark);
+        --global-card-backgroundColor: var(--global-color-neutral-xxxx-dark);
+        --global-label-color: var(--global-color-neutral-light);
+        --global-input-backgroundColor: var(--global-color-neutral-xxxxxx-dark);
+        --global-input-borderColor: var(--global-color-neutral-xxxxxx-dark);
+        --global-card_footer-borderTopColor: var(--global-color-neutral-xxxxxx-dark);
+    }
 }
 
 /*------------------------------------*\
